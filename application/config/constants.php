@@ -2,7 +2,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 define('BASE_FOLDER', '' );
-define('HTTP_PATH', 'http://' . $_SERVER['HTTP_HOST'] . BASE_FOLDER );
+define('HTTP_PATH', 'https://' . $_SERVER['HTTP_HOST'] . BASE_FOLDER );
 
 define('ASSETS_PATH', HTTP_PATH. '/assets');
 
