@@ -15,7 +15,7 @@ $.fn.overHang = function(arguments){
 	var col;
 	var dCol;
 	var overHangHeight;
-	
+
 	// Default action
 	var activity = "notification";
 	// Default time
@@ -36,7 +36,7 @@ $.fn.overHang = function(arguments){
 	};
 
 	if (arguments != undefined){
-		
+
 		// Validate activity argument
 		if (arguments.activity != undefined && ["", "notification", "prompt", "confirmation"].indexOf(arguments.activity)){
 			activity = arguments.activity;
@@ -54,7 +54,7 @@ $.fn.overHang = function(arguments){
 		} else {
 			message = "overHang.js";
 		}
-	 
+
 		// Set color or theme
 		if (arguments.col != undefined){
 			if (arguments.col in themes){
@@ -77,7 +77,7 @@ $.fn.overHang = function(arguments){
 	}
 
 	// Add 'Roboto' google font
-	$("head").append("<link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>");
+	$("head").append("<link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>");
 
 	// Drop or raise overHang banner
 	function animate(state){
@@ -147,7 +147,7 @@ $.fn.overHang = function(arguments){
 		"border-radius" : "4px",
 		"font-family" : "'Roboto', 'sans-serif'",
 		"font-size" : "20px",
-		"color" : "#fff"	
+		"color" : "#fff"
 	}
 
 	// Notification
@@ -159,7 +159,7 @@ $.fn.overHang = function(arguments){
 		$(".textContainer").css($textContainer);
 
 		// Jquery animation
-		$(".overHangClass").slideDown("slow").delay(duration*1000).slideUp("slow");	
+		$(".overHangClass").slideDown("slow").delay(duration*1000).slideUp("slow");
 	}
 
 	// Prompt for input
@@ -192,7 +192,7 @@ $.fn.overHang = function(arguments){
 	// Confirmation (yes / no)
 	else {
 
-		$element.prepend("<span class='removeSpan'><div class='overHangClass textContainer'><div style='padding-top:5px; padding-bottom:10px; display: inline-block'>" + 
+		$element.prepend("<span class='removeSpan'><div class='overHangClass textContainer'><div style='padding-top:5px; padding-bottom:10px; display: inline-block'>" +
 						message + " <button class='yes' id='yes'>Yes</button>" + " or " + "<button id='no' class='no'>No</button></div></div></span>");
 
 		// Add CSS attributes
