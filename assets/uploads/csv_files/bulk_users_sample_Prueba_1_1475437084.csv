@@ -1,0 +1,5 @@
+Employee ID,First Name,Last Name,Email ID,Avaya Number,User Type,Title,Supervisor's Employee ID,QA's Employee ID,Manager's Employee ID,Date of joining
+123456,Julie,Ramirez,,,Manager,,RCC123,RCC124,RCC123,1/1/2016
+123457,Tommy,Ramirez,,,Supervisor,Supervisor,RCC123,RCC124,RCC123,1/1/2016
+123458,Adriana ,Ramirez,,,Employee,Employee,RCC123,RCC124,RCC123,1/1/2016
+123459,Luna ,Ramirez,,,Employee,Employee,RCC123,RCC124,RCC123,1/1/2016

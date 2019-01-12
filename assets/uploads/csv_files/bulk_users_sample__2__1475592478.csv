@@ -1,0 +1,3 @@
+"Employee ID","First Name","Last Name","Email ID","Avaya Number","User Type",Title,"Supervisor's Employee ID","QA's Employee ID","Manager's Employee ID","Date of joining"
+RCC122,John,Karter,,12589,Employee,,123789,qa123,m123,2016-09-27
+RCC125,Samuel,Gomez,samuel@mailinator.com,13589,Manager,Supervisor,,,m123,2016-09-27
