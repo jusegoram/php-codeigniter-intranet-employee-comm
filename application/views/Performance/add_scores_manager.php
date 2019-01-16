@@ -39,7 +39,7 @@
 	<div class="mdl-grid demo-content">
 		<div class="mdl-card mdl-shadow--2dp demo-todo">
 			<div class="mdl-card__title">
-					<h2> Score list</h2>
+				<h2 class="mdl-card__title-text" id="name_score">Employee List scores</h2>
 			</div>
 
 			<div class="mdl-layout--middle">
