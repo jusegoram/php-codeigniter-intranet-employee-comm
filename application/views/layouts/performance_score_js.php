@@ -127,7 +127,8 @@ $(document).ready(function(){
 
 							var rowData 	= nRow.split('~&');
 							console.log(rowData);
-							var showButton 	= '<a href="javascript:void(0);" data-score-type='+rowData[2]+' data-employee_id='+rowData[1]+' class="show-dialog-content">'+rowData[0]+'</a>';
+							var showButton = '<button style="width:100%;" href="javascript:void(0);" data-score-type='+rowData[2]+' data-employee_id='+rowData[1]+' class="show-dialog-content mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored">'+rowData[0]+'</button>'
+						//	var showButton 	= '<a href="javascript:void(0);" data-score-type='+rowData[2]+' data-employee_id='+rowData[1]+' class="show-dialog-content">'+rowData[0]+'</a>';
 							return showButton;
 						} else {
 							return nRow;
@@ -179,19 +180,19 @@ $(document).ready(function(){
 		switch ( scoreType )
 		{
 			case 1:
-				scoreName = 'External Quality';
+				scoreName = 'Quality';
 			break;
 
 			case 2:
-				scoreName = 'Internal Quality';
+				scoreName = 'Productivity';
 			break;
 
 			case 3:
-				scoreName = 'Adherence';
+				scoreName = 'Hours';
 			break;
 
 			case 4:
-				scoreName = 'Transfer Rate';
+				scoreName = 'Other';
 			break;
 
 			case 5:
@@ -199,7 +200,7 @@ $(document).ready(function(){
 			break;
 
 			case 6:
-				scoreName = 'Conversion Rate';
+				scoreName = 'Break Time';
 			break;
 		}
 
