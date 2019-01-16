@@ -36,7 +36,7 @@
 		</div>
 	</div>
 
-	<!-- <div class="mdl-grid demo-content">
+	<div class="mdl-grid demo-content">
 		<div class="mdl-card mdl-shadow--2dp demo-todo">
 			<div class="mdl-card__title">
 				<h2 class="mdl-card__title-text" id="name_score">Score list</h2>
@@ -46,47 +46,17 @@
 				<table id="performance_users_table" class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
 					<thead>
 						<tr>
-							 <th class="mdl-data-table__cell--non-numeric" data-field="id">S.No</th>
-							<th class="mdl-data-table__cell--non-numeric" data-field="performance_for">Name</th>
-							<th class="mdl-data-table__cell--non-numeric" data-field="performance_date">Employee ID</th>
-							<th class="mdl-data-table__cell--non-numeric" data-field="quality">test</th>
 							<th class="mdl-data-table__cell--non-numeric" >S.N</th>
 							<th class="mdl-data-table__cell--non-numeric" >Name</th>
 							<th class="mdl-data-table__cell--non-numeric" >Employee Id</th>
-							<th class="mdl-data-table__cell--non-numeric" >Score</th>
 							<th class="mdl-data-table__cell--non-numeric" >Client</th>
-							<th class="mdl-data-table__cell--non-numeric" >Date</th>
-							<th class="mdl-data-table__cell--non-numeric" >Action</th>
 						</tr>
 					</thead>
 				</table>
 			</div>
-		</div>
-	</div> -->
-	<div class="mdl-grid demo-content">
-		<div class="mdl-card mdl-shadow--2dp demo-todo">
-			<div class="mdl-card__title">
-				<h2 class="mdl-card__title-text" id="name_score">List for Quality Scores</h2>
-			</div>
-
-			<div class="mdl-layout--middle">
-				<table id="performance_users_table" class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
-					<thead>
-						<tr>
-							<th class="mdl-data-table__cell--non-numeric" >S.N</th>
-							<th class="mdl-data-table__cell--non-numeric" >Name</th>
-							<th class="mdl-data-table__cell--non-numeric" >Employee Id</th>
-							<th class="mdl-data-table__cell--non-numeric" >Score</th>
-							<th class="mdl-data-table__cell--non-numeric" >Client</th>
-							<th class="mdl-data-table__cell--non-numeric" >Date</th>
-							<th class="mdl-data-table__cell--non-numeric" >Action</th>
-						</tr>
-					</thead>
-				</table>
-			</div>
-
 		</div>
 	</div>
+
 </main>
 
 <div id="main_push" style="display:none;">
@@ -102,7 +72,7 @@
 							<tr>
 							<th class="mdl-data-table__cell--non-numeric" >Employee Id</th>
 							<th class="mdl-data-table__cell--non-numeric" >Name</th>
-							<th class="mdl-data-table__cell--non-numeric" >Client</th>
+							<th class="mdl-data-table__cell--non-numeric" >Campaign</th>
 							<th class="mdl-data-table__cell--non-numeric" >Date</th>
 							<th class="mdl-data-table__cell--non-numeric" >Score</th>
 							</tr>
