@@ -4,7 +4,7 @@
 <!doctype html>
 <html lang="en" style="width:100%; height:100%; margin:0px; padding:0px;">
 	<head>
-		<link rel="icon" sizes="16x16" href="<?php echo ASSETS_PATH . '/images/favicon.ico' ?>" />
+		<link rel="icon" sizes="16x16" href="<?php echo ASSETS_PATH . '/images/creative-idea.png' ?>" />
 		<?php include('meta_section.php');  ?>
 		<?php include('css_section.php');  ?>
 	</head>
@@ -19,9 +19,9 @@
 					<button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" id="hdrbtn">
 						<i class="material-icons">more_vert</i>
 					</button>
-						
+
 					<ul class="mdl-menu mdl-js-menu mdl-js-ripple-effect mdl-menu--bottom-right" for="hdrbtn">
-						
+
 						<li class="mdl-menu__item">
 							<a href="<?php echo site_url("user/profile_setting"); ?>">
 								<label class="mdl-icon-toggle">
@@ -50,4 +50,4 @@
 						</li>
 					</ul>
 				</div>
-			</header>	
+			</header>
