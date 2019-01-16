@@ -122,7 +122,7 @@ $(document).ready(function(){
 				{ "data": "first_name", "class": "mdl-data-table__cell--non-numeric",
 
 					mRender: function (nRow, aData, iDisplayIndex) {
-						var userType = '<?php echo $user_session->user_type;?>';
+						// var userType = '<?php echo $user_session->user_type;?>';
 						// if( (1 == userType) || (5 == userType) || (6 == userType) ) {
 
 						// 	var rowData 	= nRow.split('~&');
@@ -155,11 +155,11 @@ $(document).ready(function(){
 				// <?php endif; ?>
 			]
 
-			<?php if( (1 == $user_session->user_type) || (5 == $user_session->user_type) || (6 == $user_session->user_type) ): ?>
-				, "order": [[ 1, "asc" ]]
-			<?php else: ?>
-				, "order": [[ 5, "desc" ]]
-			<?php endif; ?>
+			// <?php if( (1 == $user_session->user_type) || (5 == $user_session->user_type) || (6 == $user_session->user_type) ): ?>
+			// 	, "order": [[ 1, "asc" ]]
+			// <?php else: ?>
+			, "order": [[ 5, "desc" ]]
+			// <?php endif; ?>
 			, "pageLength": 10
 			, "bAutoWidth": false
 		});
