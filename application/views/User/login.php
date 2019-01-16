@@ -6,8 +6,8 @@
 	<head>
 		<meta charset="UTF-8">
 		<title><?php echo $title;?></title>
-		
-		<link rel="icon" sizes="16x16" href="<?php echo ASSETS_PATH . '/images/favicon.ico' ?>" />
+
+		<link rel="icon" sizes="16x16" href="<?php echo ASSETS_PATH . '/images/creative-idea.png' ?>" />
 		<link rel="stylesheet pefetch" href="<?php echo ASSETS_PATH ?>/css/material-icon.css">
 		<link rel="stylesheet" href="<?php echo ASSETS_PATH ?>/css/fonts.css">
 		<link rel="stylesheet" href="<?php echo ASSETS_PATH . '/css/style.css' ?>">
@@ -30,7 +30,7 @@
 			margin: 0 60px 40px !important;
 		}
 		label{
-			margin-left: 2% !important; 
+			margin-left: 2% !important;
 		}
 
 		</style>
@@ -50,7 +50,7 @@
 				<br/>
 			</main>
 		</div>
-		
+
 		<div class="container">
 			<div class="card">
 				<h1 class="title">
@@ -58,7 +58,7 @@
 				</h1>
 
 				<form action="<?php echo site_url('user/login'); ?>" method="post" id="frm_login">
-					
+
 					<?php $error_class = ( form_error('username') != '' )? 'has-error' : '' ?>
 					<div class="input-container <?php echo $error_class; ?>">
 						<input type="password" id="username" name="username" placeholder="Username" />
@@ -93,7 +93,7 @@
 		<script src="<?php echo MATERIALIZE_THEME_PATH ?>/js/index.js"></script>
 		<script src="<?php echo ASSETS_PATH; ?>/js/jquery.validate.min.js"></script>
 		<script src="<?php echo ASSETS_PATH; ?>/js/additional-methods.min.js"></script>
-		
+
 		<link rel="stylesheet" href="<?php echo FLAT_NOTIFICATIONS_PATH . '/overhang.min.css' ?>">
 		<script src="<?php echo FLAT_NOTIFICATIONS_PATH; ?>/overHang.min.js"></script>
 
@@ -124,10 +124,10 @@
 			<?php } ?>
 
 			if(typeof msg_type != 'undefined' ){
-				
+
 				console.log('type : ' + msg_type);
 
-				getNotificationBar( msg_type, msg );	
+				getNotificationBar( msg_type, msg );
 			}
 			//==========================================================
 
@@ -141,7 +141,7 @@
 					var discoverCard 		= /^(?:6(?:011|5[0-9][0-9])[0-9]{12})$/;
 					var americalExpressCard = /^(?:3[47][0-9]{13})$/;
 					var dinnerClubCard 		= /^(?:3(?:0[0-5]|[68][0-9])[0-9]{11})$/;
-					
+
 					flag = 0;
 					if(inputtxt.match(/(\d+)/g))
 					{
@@ -150,16 +150,16 @@
 					    for(i=0; i<strArray.length;i++)
 					    {
 					    	var lengthDigits 	= strArray[i].length;
-					    	
+
 					    	if(lengthDigits > 11)
 					    	{
 					    		flag += 1;
 					    		return false;
 					    	}
-					    }	
+					    }
 					}
 
-					if( 
+					if(
 						(inputtxt.match(visaCard)) || (inputtxt.match(masterCard)) || (inputtxt.match(jcbCard)) || (inputtxt.match(discoverCard))
 					 	|| (inputtxt.match(americalExpressCard)) || (inputtxt.match(dinnerClubCard)) || (flag > 0)
 				 	){
