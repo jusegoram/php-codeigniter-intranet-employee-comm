@@ -76,10 +76,7 @@
 							<th class="mdl-data-table__cell--non-numeric" >S.N</th>
 							<th class="mdl-data-table__cell--non-numeric" >Name</th>
 							<th class="mdl-data-table__cell--non-numeric" >Employee Id</th>
-							<th class="mdl-data-table__cell--non-numeric" >Score</th>
-							<th class="mdl-data-table__cell--non-numeric" >Client</th>
-							<th class="mdl-data-table__cell--non-numeric" >Date</th>
-							<th class="mdl-data-table__cell--non-numeric" >Action</th>
+							<th class="mdl-data-table__cell--non-numeric" >email</th>
 						</tr>
 					</thead>
 				</table>
