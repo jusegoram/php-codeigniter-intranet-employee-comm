@@ -46,19 +46,26 @@
 				<table id="performance_users_table" class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
 					<thead>
 						<tr>
-							<th class="mdl-data-table__cell--non-numeric" data-field="id">S.No</th>
+							<!-- <th class="mdl-data-table__cell--non-numeric" data-field="id">S.No</th>
 							<th class="mdl-data-table__cell--non-numeric" data-field="performance_for">Name</th>
 							<th class="mdl-data-table__cell--non-numeric" data-field="performance_date">Employee ID</th>
-							<th class="mdl-data-table__cell--non-numeric" data-field="quality">Score</th>
+							<th class="mdl-data-table__cell--non-numeric" data-field="quality">test</th> -->
+							<th class="mdl-data-table__cell--non-numeric" >Employee Id</th>
+							<th class="mdl-data-table__cell--non-numeric" >Name</th>
+							<th class="mdl-data-table__cell--non-numeric" >Client</th>
+							<th class="mdl-data-table__cell--non-numeric" >Date</th>
+							<th class="mdl-data-table__cell--non-numeric" >Score</th>
+							<th class="mdl-data-table__cell--non-numeric" >Status</th>
 						</tr>
 					</thead>
 				</table>
 			</div>
 		</div>
 	</div>
+
 </main>
 
-<div id="main_push" style="display:none;">
+<!-- <div id="main_push" style="display:none;">
 	<section class="mdl-layout__content mdl-color--grey-100 dialog-section dialog_class_div">
 		<div class="mdl-grid demo-content">
 			<div class="mdl-card mdl-shadow--2dp demo-todo">
@@ -83,4 +90,4 @@
 			</div>
 		</div>
 	</section>
-</div>
+</div> -->
