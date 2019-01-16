@@ -64,8 +64,8 @@
 		<div class="mdl-grid demo-content">
 			<div class="mdl-card mdl-shadow--2dp demo-todo">
 				<div class="mdl-card__title">
+				<h2 class="mdl-card__title-text" id="name_score1">score</h2>
 				</div>
-
 				<div class="mdl-layout--middle">
 					<table id="performance_score_popup" class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
 						<thead>
