@@ -136,10 +136,20 @@ $(document).ready(function(){
 				{ "data": "employee_id", "class": "mdl-data-table__cell--non-numeric"},
 
 				<?php if( (1 == $user_session->user_type) || (5 == $user_session->user_type) || (6 == $user_session->user_type) ): ?>
-					{ "data": "score", "class": "mdl-data-table__cell--non-numeric"},
+				{ "data": "score", "class": "mdl-data-table__cell--non-numeric"},
 					{ "data": "avaya_number", "class": "mdl-data-table__cell--non-numeric"},
 					{ "data": "date", "class": "mdl-data-table__cell--non-numeric"},
 					{ "data": "action", "searchable":false, "orderable":false, "class": "mdl-data-table__cell--non-numeric",
+
+						mRender: function (nRow, aData, iDisplayIndex) {
+							var rowData 	= nRow.split('~');
+						  	var site_url 	= rowData[0];
+						  	var id 			= rowData[1];
+							var showButton 	= '<a class="delete_data" href="javascript:void(0);" data-url=' + site_url + '/remove  data-id=' + id +' title="Delete"><i class="tiny material-icons" title="Delete">delete</i></a>';
+							return showButton;
+						}
+
+					}
 				<?php else: ?>
 					{ "data": "score", "class": "mdl-data-table__cell--non-numeric"},
 					{ "data": "avaya_number", "class": "mdl-data-table__cell--non-numeric"},
