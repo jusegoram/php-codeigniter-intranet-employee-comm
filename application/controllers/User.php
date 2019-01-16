@@ -3,9 +3,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 /*
 @Name 			:
-@Description 	: 
-@Created By 	: 
-@Created Date 	: 
+@Description 	:
+@Created By 	:
+@Created Date 	:
 @Updated Date 	:
 @Version 		: 1.0
 */
@@ -13,7 +13,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class User extends CI_Controller
 {
 	public function __construct()
-	{	
+	{
 		parent::__construct();
 		$this->load->model('User_model');
 
@@ -23,15 +23,15 @@ class User extends CI_Controller
 	/*
 	* This is index function for getting information about users
 	* @author 		:
-	* @createdOn	: 
+	* @createdOn	:
 	*/
 	public function index(){
-		
+
 		is_user_employee(array(1,3,4,5,6));
 		is_user_login();
 		$data['navBarNumber'] = 3;
 		password_change_or_expire();
-		
+
 		$data['title'] 			= 'Users';
 		$data['page_js'] 		= 'user_js';
 		$user_session			= $this->session->userdata('USER_SESSION');
@@ -67,9 +67,9 @@ class User extends CI_Controller
 			$length	 						= $this->input->post('length');
 			$order_details               	= $this->input->post('order');
 			$search_str 					= $this->input->post('search');
-			
+
 			$response['draw']            	= $this->input->post('draw');
-				
+
 			$query_parameter['start']    	= empty($start) ? 0 : $start;
 			$query_parameter['limit']    	= empty($length) ? 10 : $length;
 			$query_parameter['order_by'] 	= $this->manage_orderby_for_article($order_details);
@@ -86,7 +86,7 @@ class User extends CI_Controller
 
 					$results 	= $this->User_model->find_all( false, $user_session->employee_id, $search_str );
 					$user_lists = $this->User_model->find_all_pagination( false, $user_session->employee_id, $search_str, $query_parameter['limit'], $query_parameter['start'], $query_parameter['type'], $query_parameter['order_by']);
-					
+
 					// $results 	= $this->User_model->find_all( false, $user_session->employee_id, $search_str, '', true );
 					// $user_lists = $this->User_model->find_all_pagination( false, $user_session->employee_id, $search_str, $query_parameter['limit'], $query_parameter['start'], $query_parameter['type'], $query_parameter['order_by'], true);
 					break;
@@ -122,7 +122,7 @@ class User extends CI_Controller
 
 			$response['data']            	= $this->user_filter( $user_lists, $query_parameter['start']+1 );
 			$response['recordsFiltered'] 	= (!empty($results)) ? count($results) :0;
-			
+
 			$response['recordsTotal']   	= (!empty($results)) ? count($results) :0;
 			$response['hash_token']   		= $this->security->get_csrf_hash();
 			echo json_encode($response);
@@ -140,30 +140,30 @@ class User extends CI_Controller
 	public function manage_orderby_for_article($order_details)
 	{
 		if ($this->input->is_ajax_request()) {
-			
+
 			$column 	= $order_details[0]['column'];
 			$type 		= $order_details[0]['dir'];
-	 
+
 			switch ($column)
 			{
-		
+
 				// by default order byid
 				case '0':
 					$str = "id";
 					return $str;
 				break;
-		
+
 				// order by title
 				case '1':
 					$str = "first_name";
 					return $str;
 				break;
-			
+
 				case '2':
 					$str = "employee_id";
 					return $str;
 				break;
-				
+
 				case '3':
 					$str = "avaya_number";
 					return $str;
@@ -173,7 +173,7 @@ class User extends CI_Controller
 					$str = "email";
 					return $str;
 				break;
-			
+
 				case '5':
 					$str = "job_title";
 					return $str;
@@ -192,12 +192,12 @@ class User extends CI_Controller
 		}
 	}
 	//================================================
-	
+
 	/* ajax article filter */
 	public function user_filter($user_lists, $index )
 	{
 		if ($this->input->is_ajax_request()) {
-			
+
 			$filtered_data 	= array();
 			$record 		= array();
 			$user_session	= $this->session->userdata('USER_SESSION');
@@ -209,7 +209,7 @@ class User extends CI_Controller
 
 				foreach($user_lists as $key => $users)
 				{
-					
+
 					$set_job_title = '';
 					if( 1 == $users->job_title ) {
 						$set_job_title = 'Supervisor';
@@ -218,7 +218,7 @@ class User extends CI_Controller
 					} elseif( 3 == $users->job_title ) {
 						$set_job_title = 'Manager';
 					}
-					
+
 					$filtered_da['id'] 			= $i;
 					$filtered_da['first_name'] 	= $users->first_name.' '.$users->last_name;
 					$filtered_da['employee_id'] = $users->employee_id;
@@ -227,7 +227,7 @@ class User extends CI_Controller
 					$filtered_da['job_title'] 	= ( $set_job_title ) ? $set_job_title : 'Employee';
 					$filtered_da['user_type'] 	= ( ( 1 == $users->user_type ) || ( 5 == $users->user_type ) || ( 6 == $users->user_type ) ) ? $set_job_title : ( (4 == $users->user_type)?'Admin': 'Employee');
 					$filtered_da['action'] 		= ( ( 3 == $user_type ) || ( 4 == $user_type ) ) ? site_url('user').'~'.$users->id.'~'.$user_type : '';
-			
+
 				$filtered_data[] = $filtered_da;
 				$i++;
 				}
@@ -243,12 +243,12 @@ class User extends CI_Controller
 	//================================================
 
 	public function view_admin_list(){
-		
+
 		is_user_login();
 		is_user_employee(array(3));
 		password_change_or_expire();
 		$data['navBarNumber'] = 3;
-		
+
 		$data['title'] 			= 'Users';
 		$data['page_js'] 		= 'user_js';
 		$user_session			= $this->session->userdata('USER_SESSION');
@@ -285,9 +285,9 @@ class User extends CI_Controller
 			$length	 						= $this->input->post('length');
 			$order_details               	= $this->input->post('order');
 			$search_str 					= $this->input->post('search');
-			
+
 			$response['draw']            	= $this->input->post('draw');
-				
+
 			$query_parameter['start']    	= empty($start) ? 0 : $start;
 			$query_parameter['limit']    	= empty($length) ? 10 : $length;
 			$query_parameter['order_by'] 	= $this->admin_manage_orderby_for_article($order_details);
@@ -300,10 +300,10 @@ class User extends CI_Controller
 
 			$results 	= $this->User_model->find_all_admin( 4, $search_str );
 			$user_lists = $this->User_model->find_all_admin( 4, $search_str, $query_parameter['limit'], $query_parameter['start'], $query_parameter['type'], $query_parameter['order_by']);
-			
+
 			$response['data']            	= $this->admin_user_filter( $user_lists, $query_parameter['start']+1 );
 			$response['recordsFiltered'] 	= (!empty($results)) ? count($results) :0;
-			
+
 			$response['recordsTotal']   	= (!empty($results)) ? count($results) :0;
 			$response['hash_token']   		= $this->security->get_csrf_hash();
 			echo json_encode($response);
@@ -321,30 +321,30 @@ class User extends CI_Controller
 	public function admin_manage_orderby_for_article($order_details)
 	{
 		if ($this->input->is_ajax_request()) {
-			
+
 			$column 	= $order_details[0]['column'];
 			$type 		= $order_details[0]['dir'];
-	 
+
 			switch ($column)
 			{
-		
+
 				// by default order byid
 				case '0':
 					$str = "id";
 					return $str;
 				break;
-		
+
 				// order by title
 				case '1':
 					$str = "first_name";
 					return $str;
 				break;
-			
+
 				case '2':
 					$str = "employee_id";
 					return $str;
 				break;
-				
+
 				case '3':
 					$str = "avaya_number";
 					return $str;
@@ -354,7 +354,7 @@ class User extends CI_Controller
 					$str = "email";
 					return $str;
 				break;
-			
+
 				case '5':
 					$str = "user_type";
 					return $str;
@@ -368,12 +368,12 @@ class User extends CI_Controller
 		}
 	}
 	//================================================
-	
+
 	/* ajax article filter */
 	public function admin_user_filter($user_lists, $index )
 	{
 		if ($this->input->is_ajax_request()) {
-			
+
 			$filtered_data 	= array();
 			$record 		= array();
 			$user_session	= $this->session->userdata('USER_SESSION');
@@ -385,7 +385,7 @@ class User extends CI_Controller
 
 				foreach($user_lists as $key => $users)
 				{
-					
+
 					$filtered_da['id'] 			= $i;
 					$filtered_da['first_name'] 	= $users->first_name.' '.$users->last_name;
 					$filtered_da['employee_id'] = $users->employee_id;
@@ -393,7 +393,7 @@ class User extends CI_Controller
 					$filtered_da['email'] 		= $users->email;
 					$filtered_da['user_type'] 	= ( (1 == $users->user_type) || (5 == $users->user_type) || (6 == $users->user_type) ) ? $set_job_title : ( (4 == $users->user_type)?'Admin': 'Employee');
 					$filtered_da['action'] 		= ( ( 3 == $user_type ) || ( 4 == $user_type ) ) ? site_url('user').'~'.$users->id.'~'.$user_type : '';
-			
+
 				$filtered_data[] = $filtered_da;
 				$i++;
 				}
@@ -409,7 +409,7 @@ class User extends CI_Controller
 	//================================================
 
 	public function login()
-	{	
+	{
 		$data['title'] 		= 'Login';
 		$data['page_js'] 	= 'user_js';
 
@@ -455,7 +455,7 @@ class User extends CI_Controller
 				}
 			}
 		}
-		
+
 		$this->load->view('User/login', $data);
 	}
 	//================================================
@@ -501,7 +501,7 @@ class User extends CI_Controller
 		is_user_login();
 		is_user_employee(array(3,4));
 		password_change_or_expire();
-		
+
 		$user_session			= $this->session->userdata('USER_SESSION');
 		$data['user_session'] 	= $user_session;
 		$data['title'] 			= 'Users';
@@ -537,14 +537,14 @@ class User extends CI_Controller
 			if( !empty( $check_user_type ))
 			{
 				if( 1 == $check_user_type ) {
-					
+
 					$this->form_validation->set_rules('job_title', 'Job Title', 'trim|required|xss_clean|strip_tags|alpha_numeric');
 				} elseif( ( $check_user_type == 5 ) || ( $check_user_type == 6 ) ) {
 
 					$this->form_validation->set_rules('job_title', 'Job Title', 'trim|required|xss_clean|strip_tags|alpha_numeric');
 					$this->form_validation->set_rules('assigned_manager', 'Assign Manager', 'trim|xss_clean|strip_tags');
 				} elseif( 2 == $check_user_type ) {
-					
+
 					$this->form_validation->set_rules('assigned_supervisor', 'Assign Supervisor', 'trim|xss_clean|strip_tags');
 					$this->form_validation->set_rules('assigned_qa', 'Assign QA', 'trim|xss_clean|strip_tags');
 					$this->form_validation->set_rules('assigned_manager', 'Assign Manager', 'trim|xss_clean|strip_tags');
@@ -578,20 +578,20 @@ class User extends CI_Controller
 				$job_title 			= null;
 
 				if( ( 4 == $check_user_type ) && ( 3 == $user_session->user_type ) ) {
-					
+
 					$user_type		= 4;
 				} elseif( 1 == $check_user_type ) {
-					
+
 					$user_type		= 1;
 					$job_title 		= $this -> input -> post('job_title', TRUE);
 				} elseif( ( $check_user_type == 5 ) || ( $check_user_type == 6 ) ) {
-					
+
 					// $user_type			= 1;
 					$user_type			= $check_user_type;
 					$job_title 			= $this -> input -> post('job_title', TRUE);
 					$assigned_manager 	= $this -> input -> post('assigned_manager', TRUE);
 				} else {
-					
+
 					$user_type			 = 2;
 					$assigned_supervisor = $this -> input -> post('assigned_supervisor', TRUE);
 					$assigned_qa 		 = $this -> input -> post('assigned_qa', TRUE);
@@ -641,7 +641,7 @@ class User extends CI_Controller
 					$this->session->set_flashdata('error', 'User addition failed.');
 					$data['errors'] = validation_errors();
 				}
-				
+
 			}
 		}
 
@@ -661,7 +661,7 @@ class User extends CI_Controller
 
 		$user_session			= $this->session->userdata('USER_SESSION');
 		$data['user_session'] 	= $user_session;
-		
+
 		$data['title'] 			= 'Users';
 		$data['page_js'] 		= 'user_js';
 		$not_added_user_array 	= array();
@@ -672,28 +672,28 @@ class User extends CI_Controller
 		);
 
 		$data['csrf'] 			= $csrf;
-		
+
 		if( !empty($_FILES['file_name']['name']) && isset($_POST) )
 		{
 			$this->load->library('csv_reader');
-			
+
 			$this->form_validation->set_error_delimiters('<p class="has-error">', '</p>');
 			$this->form_validation->set_rules('default_password', 'Password', 'trim|required|xss_clean|strip_tags|callback_password_check|callback_check_card');
-			
+
 			if( $this->form_validation->run() == FALSE ) {
-				
+
 				$this->session->set_flashdata('warning', 'Please enter valid password!');
 				$data['errors'] = validation_errors();
 			} else {
-				
+
 				$password 			= $this->input->post('default_password', TRUE);
 				$is_change_password = $this->input->post('is_change_password', TRUE);
 
 				if($is_change_password) {
-					
+
 					$is_change_password = 1;
 				} else {
-					
+
 					$is_change_password = 0;
 				}
 
@@ -701,12 +701,12 @@ class User extends CI_Controller
 				$file_name 			= $file['name'];
 				$file_name 			= space_to_symbol($file_name);
 				$file_ext 			= get_extention($file_name);
-				
+
 				$file_name 			= get_extention($file_name, 'filename');
 				$file_name 			= $file_name .'_' . time() . '.' . $file_ext;
 
-				$file_header_array 	= array( 
-					'Employee ID', 'First Name', 'Last Name', 'Email ID', 'Avaya Number', 'User Type', 'Title', "Supervisor's Employee ID", "QA's Employee ID", "Manager's Employee ID", 'Date of joining'
+				$file_header_array 	= array(
+					'Employee ID', 'First Name', 'Last Name', 'Client', 'Campaign', 'User Type', 'Title', "Supervisor's Employee ID", "QA's Employee ID", "Manager's Employee ID", 'Date of joining'
 				);
 
 				$path = CSV_ROOT_UPLOAD_PATH . '/';
@@ -714,16 +714,16 @@ class User extends CI_Controller
 				$is_uploaded = $this->do_upload($file_name, $field_name='file_name', $path);
 
 				if( !$is_uploaded['error'] ) {
-					
+
 					$csv_file 	= $path.$file_name;
 					$results 	= $this->csv_reader->parse_file($csv_file);
-					
+
 					$last 		= count($results);
 					$counter 	= 0;
 					$counter1 	= 0;
 					$not_added_counter 	= 0;
 					$file_header = array();
- 
+
 					foreach ($results[1] as $key => $header_result) {
 						array_push($file_header, $key);
 					}
@@ -733,15 +733,15 @@ class User extends CI_Controller
 						$this->session->set_flashdata('warning', 'Please import valid csv file!');
 						redirect('/user/create_bulk');
 					}
-					
+
 					foreach( $results as $result ) {
-						
+
 						$employee_id 		= $result['Employee ID'];
 						$first_name 		= $result['First Name'];
 						$last_name 			= $result['Last Name'];
-						$email 				= $result['Email ID'];
+						$email 				= $result['Client'];
 						$username 			= $result['Employee ID'];
-						$avaya_number 		= $result['Avaya Number'];
+						$avaya_number 		= $result['Campaign'];
 						$hire_date 			= strtotime($result['Date of joining']);
 						$created_date 		= time(); //strtotime(date('Y-m-d'));
 
@@ -777,7 +777,7 @@ class User extends CI_Controller
 
 								$user_type 		= 1;
 								$job_title 		= 3;
-								
+
 							} elseif( ($find_user_type == 'Quality Analyst') ||  ($find_user_type == 'quality analyst') ) {
 
 								if( !empty($result["Manager's Employee ID"])) {
@@ -787,7 +787,7 @@ class User extends CI_Controller
 
 								$user_type 		= 6;
 								$job_title 		= 2;
-								
+
 							} elseif( ($find_user_type == 'Supervisor') ||  ($find_user_type == 'supervisor') ) {
 
 								if( !empty($result["Manager's Employee ID"])) {
@@ -797,12 +797,12 @@ class User extends CI_Controller
 
 								$user_type 		= 5;
 								$job_title 		= 1;
-								
+
 							} elseif( ($find_user_type == 'ADMIN') || ($find_user_type == 'Admin') || ($find_user_type == 'admin') ) {
 								$user_type = 4;
 							}
 
-							
+
 							$password_enc = md5_hash( $password );
 
 							$previous_password  	= array($created_date => $password_enc);
@@ -844,13 +844,13 @@ class User extends CI_Controller
 							);
 
 							if( empty($is_exists_employee_id) ) {
-								
+
 								if( (!empty($assigned_qa) && empty($is_exists_assigned_qa)) || (!empty($assigned_supervisor) && empty($is_exists_assigned_supervisor)) || (!empty($assigned_manager) && empty($is_exists_assigned_manager)) ){
 
-									$not_inserted_record['resion']	= '<strong style="color:red;">Assigned QA or Supervisor or Manager does not exists</strong>';
+									$not_inserted_record['reason']	= '<strong style="color:red;">Assigned QA or Supervisor or Manager does not exists</strong>';
 									$not_added_counter++;
 									$not_added_record[] = $not_inserted_record;
-								
+
 								} else {
 
 									$this->User_model->add( $insert_record );
@@ -858,8 +858,8 @@ class User extends CI_Controller
 								}
 
 							} else {
-								
-								$not_inserted_record['resion']	= '<strong style="color:red;">Employee Already exists</strong>';
+
+								$not_inserted_record['reason']	= '<strong style="color:red;">Employee Already exists</strong>';
 								$not_added_counter++;
 								$not_added_record[] = $not_inserted_record;
 							}
@@ -878,19 +878,19 @@ class User extends CI_Controller
 								'assigned_supervisor' => $assigned_supervisor,
 								'assigned_manager' 	=> $assigned_manager,
 								'hire_date' 		=> $hire_date,
-								'resion'			=> '<strong style="color:red;">All important fields are required</strong>'
+								'reason'			=> '<strong style="color:red;">All important fields are required</strong>'
 							);
 							$not_added_counter++;
 							$not_added_record[] = $not_inserted_record;
 						}
-						
+
 						$counter1++;
 					}
 
 					$data['not_added_record'] 	= $not_added_record;
-					
+
 					if( $counter1 == $last ) {
-						
+
 						if( !empty($not_added_record ) ) {
 							$this->session->set_flashdata('warning', $not_added_counter.' User(s) is/are not added!');
 
@@ -900,12 +900,12 @@ class User extends CI_Controller
 						}
 					}
 				} else {
-					
+
 					$this->session->set_flashdata('warning', ' The file you are attempting to upload is not allowed.');
 				}
 			}
 		}
-		
+
 		$this->load->view('layouts/header', $data);
 		$this->load->view('layouts/nav');
 		$this->load->view('User/create_bulk', $data);
@@ -920,8 +920,8 @@ class User extends CI_Controller
 		header('Content-Disposition: attachment; filename=bulk_users_sample.csv');
 		$output = fopen('php://output', 'w');
 
-		$header_array 	= array( 
-			'Employee ID', 'First Name', 'Last Name', 'Email ID', 'Avaya Number', 'User Type', 'Title', "Supervisor's Employee ID", "QA's Employee ID", "Manager's Employee ID", 'Date of joining'
+		$header_array 	= array(
+			'Employee ID', 'First Name', 'Last Name', 'Client', 'Campaign', 'User Type', 'Title', "Supervisor's Employee ID", "QA's Employee ID", "Manager's Employee ID", 'Date of joining'
 		);
 
 		fputcsv($output, $header_array);
@@ -930,8 +930,8 @@ class User extends CI_Controller
 			"Employee ID" 			=> "RCC123",
 			"First Name" 			=> "John",
 			"Last Name" 			=> "Smith",
-			"Email ID"	 			=> "" ,
-			"Avaya Number" 			=> "12abc",
+			"Client"	 			=> "" ,
+			"Campaign" 			=> "12abc",
 			"User Type" 			=> "Employee",
 			"Title" 				=> "",
 			"Supervisor's Employee ID" => "s123",
@@ -945,8 +945,8 @@ class User extends CI_Controller
 			"Employee ID" 			=> "RCC124",
 			"First Name" 			=> "Sebatian",
 			"Last Name" 			=> "Gomez",
-			"Email ID"	 			=> "rcc@mailinator.com" ,
-			"Avaya Number" 			=> "13abc",
+			"Client"	 			=> "rcc@mailinator.com" ,
+			"Campaign" 				=> "13abc",
 			"User Type" 			=> "Manager",
 			"Title" 				=> "Supervisor",
 			"Supervisor's Employee ID" => "",
@@ -954,9 +954,9 @@ class User extends CI_Controller
 			"Manager's Employee ID" => "",
 			"Date of joining" 		=> "2016-09-27"
 		);
-		
+
 		fputcsv($output, $append_record1);
-	}		
+	}
 	//================================================
 
 	public function edit( $id )
@@ -995,7 +995,7 @@ class User extends CI_Controller
 		}
 
 		$result 		= $this->User_model->find( $id );
-		
+
 		if( $result->id != $user_session->id ){
 
 			if( 4 == $user_session->user_type ){
@@ -1004,7 +1004,7 @@ class User extends CI_Controller
 
 				$data['result'] = ( $result->user_type != 3 ) ? $result : '';
 			}
-			
+
 		} else {
 
 			$data['result'] = '';
@@ -1017,7 +1017,7 @@ class User extends CI_Controller
 			$this->form_validation->set_rules('last_name', 'Last name', 'trim|required|xss_clean|strip_tags|alpha');
 			$this->form_validation->set_rules('avaya_number', 'Avaya Number', 'trim|required|xss_clean|strip_tags|alpha_numeric|callback_check_card');
 			$this->form_validation->set_rules('hire_date', 'Hire Date', 'trim|required|xss_clean|strip_tags');
-			
+
 			$password 		= $this -> input -> post('edit_password', TRUE);
 
 			if( !empty($password) ){
@@ -1042,9 +1042,9 @@ class User extends CI_Controller
 				$avaya_number 		= $this -> input -> post('avaya_number', TRUE);
 				$email 				= $this -> input -> post('email', TRUE);
 				$hire_date 			= strtotime($this -> input -> post('hire_date', TRUE));
-				
+
 				if( 2 == $result->user_type ) {
-					
+
 					$assigned_supervisor = $this -> input -> post('assigned_supervisor', TRUE);
 					$assigned_qa 		 = $this -> input -> post('assigned_qa', TRUE);
 					$assigned_manager 	 = $this -> input -> post('assigned_manager', TRUE);
@@ -1099,7 +1099,7 @@ class User extends CI_Controller
 
 		$user_session			= $this->session->userdata('USER_SESSION');
 		$data['user_session'] 	= $user_session;
-		
+
 		$data['title'] 			= 'Users';
 		$data['page_js'] 		= 'user_js';
 
@@ -1109,17 +1109,17 @@ class User extends CI_Controller
 		);
 
 		$data['csrf'] 			= $csrf;
-		
+
 		$all_managers 			= $this->User_model->find_all( 1 );
 
 		$data['all_managers'] 	= $all_managers;
-		
+
 		if( count( $_POST ) > 0 )
 		{
 			$this->form_validation->set_error_delimiters('<p class="has-error">', '</p>');
 			$this->form_validation->set_rules('assigned_user', 'Supervisor, QA or Manager', 'trim|required|xss_clean|strip_tags');
 			$this->form_validation->set_rules('select_employee[]', 'Select Employee', 'trim|required|xss_clean|strip_tags');
-			
+
 			if( $this->form_validation->run() == FALSE )
 			{
 				$this->session->set_flashdata('warning', 'User addition failed.');
@@ -1132,11 +1132,11 @@ class User extends CI_Controller
 
 				$counter 		= 0;
 				$last 			= count($select_employee);
-				
+
 				$assigned_user 	= explode(':', $assigned_user );
-				
+
 				$assigned_user_employee_id = $assigned_user[0];
-				
+
 				if( $assigned_user[1] == "Supervisor" ) {
 					$column_name = "assigned_supervisor";
 				} elseif ( $assigned_user[1] == "Quality Analyst" ) {
@@ -1195,7 +1195,7 @@ class User extends CI_Controller
 			else
 			{
 				$da['success'] 	= 0;
-			} 
+			}
 
 			$da['hash_token'] = $this->security->get_csrf_hash();
 
@@ -1219,11 +1219,11 @@ class User extends CI_Controller
 
 		if ($this->input->is_ajax_request()) {
 			// $employee_id 	= $_GET['employee_id'];
-			
+
 			$employee_id 	= $this->input->get('employee_id');
 
 			$is_exists_employee_id =  $this->User_model->user_id_exists( '', $employee_id );
-			
+
 			if( empty($is_exists_employee_id) )
 			{
 				echo "true";
@@ -1232,7 +1232,7 @@ class User extends CI_Controller
 			else
 			{
 				echo "false";
-			} 
+			}
 			die;
 		}
 		else
@@ -1261,7 +1261,7 @@ class User extends CI_Controller
 			);
 
 			$data['csrf'] 	= $csrf;
-			
+
 			if( $this->User_model->delete($id) )
 			{
 				$da['success'] 	= 1;
@@ -1270,7 +1270,7 @@ class User extends CI_Controller
 			else
 			{
 				$da['success'] 	= 0;
-			} 
+			}
 
 			$da['hash_token'] = $this->security->get_csrf_hash();
 			echo json_encode($da);
@@ -1307,11 +1307,11 @@ class User extends CI_Controller
 		);
 
 		$data['csrf'] 			= $csrf;
-		
+
 		if( count( $_POST ) > 0 )
-		{	
+		{
 			$this->form_validation->set_error_delimiters('<p class="has-error">', '</p>');
-			
+
 			if($user_session->user_type != 2)
 			{
 				$this->form_validation->set_rules('first_name', 'First Name', 'trim|required|xss_clean|strip_tags|alpha');
@@ -1322,7 +1322,7 @@ class User extends CI_Controller
 				$last_name	= $this -> input -> post('last_name', TRUE);
 				$username	= $this -> input -> post('username', TRUE);
 				$avaya_number	= $this -> input -> post('avaya_number', TRUE);
-			}	
+			}
 
 			$email		= $this -> input -> post('email', TRUE);
 
@@ -1331,7 +1331,7 @@ class User extends CI_Controller
 			{
 				$this->session->set_flashdata('warning', 'Profile Setting failed.');
 				$data['errors'] = validation_errors();
-							    			    
+
 			}
 			else
 			{
@@ -1377,7 +1377,7 @@ class User extends CI_Controller
 		$previous_password 			= json_decode($user_session->previous_password);
 		$test 						= (array) $previous_password;
 		$count_previous_password   	= count($test);
-		
+
 		$csrf = array(
 			'name' => $this->security->get_csrf_token_name(),
 			'hash' => $this->security->get_csrf_hash()
@@ -1401,7 +1401,7 @@ class User extends CI_Controller
 			{
 				$this->session->set_flashdata('warning', 'User addition failed.');
 				$data['errors'] = validation_errors();
-							    			    
+
 			}
 			else
 			{
@@ -1434,7 +1434,7 @@ class User extends CI_Controller
 						}
 
 						$test[$updated_date] = $new_password;
-						
+
 						$test 			= json_encode($test);
 						$insert_record 	= array(
 							'password' 			 => $new_password,
@@ -1512,7 +1512,7 @@ class User extends CI_Controller
 		{
 			$this->form_validation->set_message("check_card", 'Chain numbers are not allowed');
 			return FALSE;
-		} 
+		}
 		else
 		{
 			return TRUE;

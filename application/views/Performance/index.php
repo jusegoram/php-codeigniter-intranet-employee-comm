@@ -22,8 +22,8 @@
 						<h2 class="mdl-card__title-text">Performance</h2>
 					</div>
 				</div>
-			<?php endif; ?>	
-			
+			<?php endif; ?>
+
 			<div class="mdl-layout--middle">
 				<table id="performance-table" class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
 					<thead>
@@ -32,9 +32,9 @@
 							<th class="mdl-data-table__cell--non-numeric" data-field="performance_for">Performance for</th>
 							<th class="mdl-data-table__cell--non-numeric" data-field="performance_date">Performance Date</th>
 							<th class="mdl-data-table__cell--non-numeric " data-field="quality">Quality</th>
-							<th class="mdl-data-table__cell--non-numeric " data-field="adherence">Adherence</th>
-							<th class="mdl-data-table__cell--non-numeric " data-field="hold_time">Hold Time</th>
-							<th class="mdl-data-table__cell--non-numeric " data-field="transfer_rate">Transfer Rate</th>
+							<th class="mdl-data-table__cell--non-numeric " data-field="adherence">Hours</th>
+							<th class="mdl-data-table__cell--non-numeric " data-field="hold_time">Productivity</th>
+							<th class="mdl-data-table__cell--non-numeric " data-field="transfer_rate">Other</th>
 							<th class="mdl-data-table__cell--non-numeric " data-field="status">Accepted</th>
 							<th class="mdl-data-table__cell--non-numeric " data-field="action">Action</th>
 						</tr>

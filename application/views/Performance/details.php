@@ -1,4 +1,4 @@
-<main class="mdl-layout__content mdl-color--grey-100" id="content">    
+<main class="mdl-layout__content mdl-color--grey-100" id="content">
 	<div class="mdl-grid demo-content">
 		<div class="mdl-card mdl-shadow--2dp demo-todo">
 			<div class="mdl-card__title">
@@ -12,10 +12,10 @@
 							<tr>
 								<th class="mdl-data-table__cell--non-numeric" data-field="date">Date</th>
 								<th class="mdl-data-table__cell--non-numeric" data-field="quality">Quality</th>
-								<th class="mdl-data-table__cell--non-numeric" data-field="adherence">Adherence</th>
-								<th class="mdl-data-table__cell--non-numeric" data-field="hold_time">Hold Time</th>
-								<th class="mdl-data-table__cell--non-numeric" data-field="transfer_rate">Transfer Rate</th>
-							</tr>	
+								<th class="mdl-data-table__cell--non-numeric" data-field="adherence">Hours</th>
+								<th class="mdl-data-table__cell--non-numeric" data-field="hold_time">Productivity</th>
+								<th class="mdl-data-table__cell--non-numeric" data-field="transfer_rate">Other</th>
+							</tr>
 						</thead>
 						<tbody>
 							<tr>
@@ -25,7 +25,7 @@
 								<td class="mdl-data-table__cell--non-numeric" ><?php echo $result->hold_time_commitment; ?></td>
 								<td class="mdl-data-table__cell--non-numeric" ><?php echo $result->transfer_rate_commitment; ?></td>
 							</tr>
-						</tbody>	
+						</tbody>
 					</table>
 				</div>
 			</div>
@@ -34,11 +34,11 @@
 					<div class="mdl-layout-spacer"></div>
 					<div class="mdl-cell mdl-cell--4-col">
 						<form action="<?php echo site_url('performance/details/' . $result->id);?>" method="post" class="mdl-layout" id="form_performance_details" >
-						    
+
 							<?php $error_class 		= ( form_error('employee_commitment') != '' )? 'has-error' : ''; ?>
 							<?php $disabled_attr 	= ( ( $user_session->user_type != 2 ) || ( $result->is_accepted == 1 ) ) ? 'disabled="disabled"' : ''; ?>
 							<?php $checked_attr 	= ( $result->is_accepted == 1 ) ? 'checked="checked"' : ''; ?>
-							
+
 							<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
 								<label class="mdl-textfield__label" for="manager_commitment">Manager Commitment</label>
 								<textarea class="mdl-textfield__input" disabled="disabled" id="manager_commitment" name="manager_commitment"><?php echo ( !empty( $result->manager_commitment ) )  ? $result->manager_commitment : ''; ?></textarea>
@@ -80,10 +80,10 @@
 											<td>
 											 	<button type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect cca-background-color-dark-green submit_performance">Save</button>
 											</td>
-										<?php endif?>	
+										<?php endif?>
 										<td>
 											<a  href="<?php echo site_url('performance/index') ?>" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" >
-												Back								
+												Back
 											</a>
 										</td>
 									</tr>

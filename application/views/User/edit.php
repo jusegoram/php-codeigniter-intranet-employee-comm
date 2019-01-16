@@ -1,10 +1,10 @@
-<main class="mdl-layout__content mdl-color--grey-100" id="content">    
+<main class="mdl-layout__content mdl-color--grey-100" id="content">
 	<div class="mdl-grid demo-content">
 		<div class="mdl-card mdl-shadow--2dp demo-todo">
 			<div class="mdl-card__title">
 				<h2 class="mdl-card__title-text">Edit</h2>
 			</div>
-			
+
 			<div class="mdl-card__supporting-text">
 				<div class="mdl-grid">
 					<?php if(!empty($result)) : ?>
@@ -27,7 +27,7 @@
 
 						    	<?php $error_class = ( form_error('avaya_number') != '' )? 'has-error' : '' ?>
 							    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-							       <label class="mdl-textfield__label" for="avaya_number">Avaya Number</label>
+							       <label class="mdl-textfield__label" for="avaya_number">Campaign</label>
 							       <input class="mdl-textfield__input" type="text" id="avaya_number" name="avaya_number" value="<?php echo set_value('avaya_number', $result->avaya_number ); ?>" >
 							    </div>
 						    	<?php echo form_error('avaya_number'); ?>
@@ -43,10 +43,10 @@
 							       <input class="mdl-textfield__input" type="password" id="edit_password" name="edit_password" value="<?php echo set_value('edit_password') ?>" >
 							    </div>
 						    	<?php echo form_error('edit_password'); ?>
-							    
+
 							    <?php $error_class = ( form_error('email') != '' )? 'has-error' : '' ?>
 							    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-							       <label class="mdl-textfield__label" for="email">email</label>
+							       <label class="mdl-textfield__label" for="email">Client</label>
 							       <input class="mdl-textfield__input" type="text" id="email" name="email" value="<?php echo set_value('email', $result->email ); ?>"  >
 							    </div>
 						       	<?php echo form_error('email'); ?>
@@ -66,7 +66,7 @@
 										} elseif ( ( 3 == $result->user_type ) || ( 4 == $result->user_type ) ) {
 											$user_type = 'Admin';
 										}
-									?>	
+									?>
 
 							       <input class="mdl-textfield__input" type="text" id="user_type" name="user_type" value="<?php echo set_value('user_type', $user_type ); ?>" disabled="disable" >
 							    </div>
@@ -88,14 +88,14 @@
 														} else {
 															$job_title = 'Manager';
 														}
-													?>	
+													?>
 													<option value="<?php echo $supervisor_result->employee_id; ?>" <?php echo ( $supervisor_result->employee_id == $result->assigned_supervisor ) ? 'selected="selected"' : '' ?> ><?php echo $supervisor_result->first_name.' '.$supervisor_result->last_name.'( '.$job_title.' )'; ?></option>
 												<?php }?>
 											<?php endif; ?>
 										</select>
 									</div>
 									<?php echo form_error('assigned_supervisor'); ?>
-															       		
+
 									<?php $error_class = ( form_error('assigned_qa') != '' )? 'has-error' : '' ?>
 									<div class="mdl-selectfield mdl-js-selectfield mdl-selectfield--floating-label assign-user"  style="<?php echo $display_block; ?>">
 										<!-- <label class="mdl-selectfield__label" for="assigned_qa" >Assign QA</label> -->
@@ -110,7 +110,7 @@
 														} else {
 															$job_title = 'Manager';
 														}
-													?>	
+													?>
 													<option value="<?php echo $qa_result->employee_id; ?>" <?php echo ( $qa_result->employee_id == $result->assigned_qa ) ? 'selected="selected"' : '' ?> > <?php echo $qa_result->first_name.' '.$qa_result->last_name.'( '.$job_title.' )'; ?></option>
 												<?php }?>
 											<?php endif; ?>
@@ -119,7 +119,7 @@
 									<?php echo form_error('assigned_qa'); ?>
 								<?php endif; ?>
 								<?php if( ( 2 == $result->user_type ) || ( 1 == $result->job_title ) || ( 2 == $result->job_title ) ) : ?>
-									
+
 									<?php $error_class = ( form_error('assigned_manager') != '' )? 'has-error' : '' ?>
 									<div class="mdl-selectfield mdl-js-selectfield mdl-selectfield--floating-label assign-user"  style="<?php echo $display_block; ?>">
 										<!-- <label class="mdl-selectfield__label" for="assigned_manager" >Assign Manager</label> -->
