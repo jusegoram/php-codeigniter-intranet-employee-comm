@@ -13,7 +13,7 @@
 							<i class="material-icons" title="Manage Issues">assignment</i>
 						</label>
 					</a>
-					
+
 					<a href="<?php echo site_url('logs/export_logs'); ?>">
 						<label for="view_issue" class="mdl-button mdl-js-button mdl-button--icon">
 							<i class="material-icons" title="Export Logs">file_download</i>
@@ -55,7 +55,7 @@
 											<a class="delete_data" href="javascript:void(0);" data-url="<?php echo site_url('logs/remove') ?>" data-id="<?php echo $record->id; ?>" title="Trash">
 												<i class="tiny material-icons" title="Trash">delete</i>
 											</a>
-										<?php endif: ?>	
+											<?php endif; ?>
 									</td>
 								</tr>
 							<?php endforeach; ?>
