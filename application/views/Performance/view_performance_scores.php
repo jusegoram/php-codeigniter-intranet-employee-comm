@@ -15,17 +15,17 @@
 
 				<div class="mdl-grid">
 					<div class="mdl-cell mdl-cell--2-col">
-						<button style="width:100%;" href="javascript:void(0);" data-score-type="1" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored add_users_table" onclick="document.getElementById('name_score').innerHTML='List for External Quality Scores';">Quality</button>
+						<button style="width:100%;" href="javascript:void(0);" data-score-type="1" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored add_users_table" onclick="document.getElementById('name_score').innerHTML='List for Quality Scores';">Quality</button>
 					</div>
 					<div class="mdl-cell mdl-cell--2-col">
-						<button style="width:100%;" href="javascript:void(0);" data-score-type="2" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored add_users_table" onclick="document.getElementById('name_score').innerHTML='List for Internal Quality Scores';">Productivity</button>
+						<button style="width:100%;" href="javascript:void(0);" data-score-type="2" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored add_users_table" onclick="document.getElementById('name_score').innerHTML='List for Productivity Scores';">Productivity</button>
 					</div>
 					<div class="mdl-cell mdl-cell--2-col">
-						<button style="width:100%;" href="javascript:void(0);" data-score-type="3" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored add_users_table" onclick="document.getElementById('name_score').innerHTML='List for Adherence Scores';">Hours</button>
+						<button style="width:100%;" href="javascript:void(0);" data-score-type="3" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored add_users_table" onclick="document.getElementById('name_score').innerHTML='List for Hours Scores';">Hours</button>
 					</div>
 
 					<div class="mdl-cell mdl-cell--2-col">
-						<button style="width:100%;" href="javascript:void(0);" data-score-type="4" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored add_users_table" onclick="document.getElementById('name_score').innerHTML='List for Transfer Rate Scores';">Other</button>
+						<button style="width:100%;" href="javascript:void(0);" data-score-type="4" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored add_users_table" onclick="document.getElementById('name_score').innerHTML='List for Other Scores';">Other</button>
 					</div>
 
 					<div class="mdl-cell mdl-cell--2-col">
@@ -33,7 +33,7 @@
 					</div>
 
 					<div class="mdl-cell mdl-cell--2-col">
-						<button style="width:100%;" href="javascript:void(0);" data-score-type="6" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored add_users_table" onclick="document.getElementById('name_score').innerHTML='List for Conversion Rate Scores';">Break Time</button>
+						<button style="width:100%;" href="javascript:void(0);" data-score-type="6" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored add_users_table" onclick="document.getElementById('name_score').innerHTML='List for Break Time Scores';">Break Time</button>
 					</div>
 				</div>
 			</div>
@@ -43,7 +43,7 @@
 	<div class="mdl-grid demo-content">
 		<div class="mdl-card mdl-shadow--2dp demo-todo">
 			<div class="mdl-card__title">
-				<h2 class="mdl-card__title-text" id="name_score">List for External Quality Scores</h2>
+				<h2 class="mdl-card__title-text" id="name_score">List for Quality Scores</h2>
 			</div>
 
 			<div class="mdl-layout--middle">

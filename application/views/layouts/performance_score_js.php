@@ -127,7 +127,7 @@ $(document).ready(function(){
 
 							var rowData 	= nRow.split('~&');
 							console.log(rowData);
-							var showButton = '<button style="width:100%;" href="javascript:void(0);" data-score-type='+rowData[2]+' data-employee_id='+rowData[1]+' class="show-dialog-content mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored">'+rowData[0]+'</button>'
+							var showButton = '<button style="width:100%;" href="javascript:void(0);" data-score-type='+rowData[2]+' data-employee_id='+rowData[1]+' class="show-dialog-content mdl-button mdl-js-button mdl-js-ripple-effect">'+rowData[0]+'</button>'
 						//	var showButton 	= '<a href="javascript:void(0);" data-score-type='+rowData[2]+' data-employee_id='+rowData[1]+' class="show-dialog-content">'+rowData[0]+'</a>';
 							return showButton;
 						} else {

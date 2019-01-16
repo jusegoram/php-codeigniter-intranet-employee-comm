@@ -26,19 +26,19 @@
 
 				<div class="mdl-grid">
 					<div class="mdl-cell mdl-cell--2-col">
-						<form action="<?php echo site_url("performance_score"); ?>" id="submit_form1" method="post" enctype="multipart/form-data" name="External Quality"><input name="score_type" value="1" type="hidden" /><label style="width:80%;" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored" >Quality<input name="file_name" class="select_file" type="file" /></label></form>
+						<form action="<?php echo site_url("performance_score"); ?>" id="submit_form1" method="post" enctype="multipart/form-data" name="Quality"><input name="score_type" value="1" type="hidden" /><label style="width:80%;" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored" >Quality<input name="file_name" class="select_file" type="file" /></label></form>
 					</div>
 
 					<div class="mdl-cell mdl-cell--2-col">
-						<form action="<?php echo site_url("performance_score"); ?>" id="submit_form2" method="post" enctype="multipart/form-data" name="Internal Quality"><input name="score_type" value="2" type="hidden" /><label style="width:80%;" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored" >Productivity<input name="file_name" class="select_file" type="file" /></label></form>
+						<form action="<?php echo site_url("performance_score"); ?>" id="submit_form2" method="post" enctype="multipart/form-data" name="Productivity"><input name="score_type" value="2" type="hidden" /><label style="width:80%;" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored" >Productivity<input name="file_name" class="select_file" type="file" /></label></form>
 					</div>
 
 					<div class="mdl-cell mdl-cell--2-col">
-						<form action="<?php echo site_url("performance_score"); ?>" id="submit_form3" method="post" enctype="multipart/form-data" name="Adherence"><input name="score_type" value="3" type="hidden" /><label style="width:80%;" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored" >Hours<input name="file_name" class="select_file" type="file" /></label></form>
+						<form action="<?php echo site_url("performance_score"); ?>" id="submit_form3" method="post" enctype="multipart/form-data" name="Hours"><input name="score_type" value="3" type="hidden" /><label style="width:80%;" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored" >Hours<input name="file_name" class="select_file" type="file" /></label></form>
 					</div>
 
 					<div class="mdl-cell mdl-cell--2-col">
-						<form action="<?php echo site_url("performance_score"); ?>" id="submit_form4" method="post" enctype="multipart/form-data" name="Transfer Rate"><input name="score_type" value="4" type="hidden" /><label style="width:80%;" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored" >Other<input name="file_name" class="select_file" type="file" /></label></form>
+						<form action="<?php echo site_url("performance_score"); ?>" id="submit_form4" method="post" enctype="multipart/form-data" name="Other"><input name="score_type" value="4" type="hidden" /><label style="width:80%;" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored" >Other<input name="file_name" class="select_file" type="file" /></label></form>
 					</div>
 
 					<div class="mdl-cell mdl-cell--2-col">
@@ -48,7 +48,7 @@
 					</div>
 
 					<div class="mdl-cell mdl-cell--2-col">
-						<form action="<?php echo site_url("performance_score"); ?>" id="submit_form6" method="post" enctype="multipart/form-data" name="Conversion Rate">
+						<form action="<?php echo site_url("performance_score"); ?>" id="submit_form6" method="post" enctype="multipart/form-data" name="Break Time">
 							<input name="score_type" value="6" type="hidden" />
 							<label style="width:80%;" data-score-type="6" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored" >Break Time<input name="file_name" class="select_file" type="file" /></label></form>
 					</div>
