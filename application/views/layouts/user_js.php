@@ -3,9 +3,9 @@
 $(document).ready(function(){
 
 	var message1 = "Password must contain atleast one number,<br/>one speacial character, one upper and lower<br/>lettes with minimum 12 char length";
-	// var message2 = "Chain numbers are not allowed"; 
+	// var message2 = "Chain numbers are not allowed";
 	var checkPasswordStandard = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{12,}$/;
-	
+
 	function checkCardNumber( inputtxt )
 	{
 		var visaCard 			= /^(?:4[0-9]{12}(?:[0-9]{3})?)$/;
@@ -14,7 +14,7 @@ $(document).ready(function(){
 		var discoverCard 		= /^(?:6(?:011|5[0-9][0-9])[0-9]{12})$/;
 		var americalExpressCard = /^(?:3[47][0-9]{13})$/;
 		var dinnerClubCard 		= /^(?:3(?:0[0-5]|[68][0-9])[0-9]{11})$/;
-		
+
 		flag = 0;
 		if( inputtxt.match(/(\d+)/g) )
 		{
@@ -23,7 +23,7 @@ $(document).ready(function(){
 			for( i = 0; i < strArray.length; i++ )
 			{
 				var lengthDigits 	= strArray[i].length;
-				
+
 				if( lengthDigits > 12 )
 				{
 					flag += 1;
@@ -34,7 +34,7 @@ $(document).ready(function(){
 
 		if( (inputtxt.match(visaCard)) || (inputtxt.match(masterCard)) || (inputtxt.match(jcbCard)) || (inputtxt.match(discoverCard))
 			|| (inputtxt.match(americalExpressCard)) || (inputtxt.match(dinnerClubCard)) || (flag > 0) )
-		{	
+		{
 			return false;
 		}
 		else
@@ -59,7 +59,7 @@ $(document).ready(function(){
 	$.validator.addMethod("check_current_password", function(value, element) {
 		return checkCardNumber(value);
 	}, 'Please enter a valid password');
-	
+
 	$.validator.addMethod("check_password", function (value, element) {
 	    return this.optional(element) || checkPasswordStandard.test(value);
 	}, message1);
@@ -67,7 +67,7 @@ $(document).ready(function(){
 	$.validator.addMethod("check_password1", function(value, element) {
 		return checkCardNumber(value);
 	}, 'Please enter a valid password');
-	
+
 
 	$.validator.addMethod("new_password", function (value, element) {
 	    return this.optional(element) || checkPasswordStandard.test(value);
@@ -92,9 +92,9 @@ $(document).ready(function(){
 	$.validator.addMethod("edit_password1", function(value, element) {
 		return checkCardNumber(value);
 	}, 'Please enter a valid password');
-	
+
 	$("#form_users").validate({
-		
+
 		onkeyup: function(element, event) {
                 if ($(element).attr('id') == "employee_id") {
                     return false; // disable onkeyup for your element named as "name"
@@ -145,7 +145,7 @@ $(document).ready(function(){
 			},
 
 			email: {
-				email: true
+				required: true
 			},
 
 			current_password: {
@@ -233,7 +233,7 @@ $(document).ready(function(){
 			hire_date: {
 				required: "Required"
 			},
-			
+
 			document_name: {
 				required: "Required"
 			}
@@ -256,7 +256,7 @@ $(document).ready(function(){
 	//=================================================
 
 	$("#edit_form_users").validate({
-		
+
 		rules: {
 			first_name: {
 				required: true,
@@ -272,7 +272,7 @@ $(document).ready(function(){
 				edit_password:true,
 				edit_password1:true
 			},
-			
+
 			avaya_number: {
 				required: true,
 				alphanumeric:true,
@@ -324,43 +324,43 @@ $(document).ready(function(){
 		showNewDropDown( user_type );
 	});
 	//=================================================
-	
+
 	function showNewDropDown( user_type ) {
 
 		if( 4 == user_type ) {
-			
+
 			$('.job-title').css({"display":"none"});
 			$('.assign-user').css({"display":"none"});
 			$('#assign-manager').css({"display":"none"});
 
 		} else if( 1 == user_type ) {
-			
+
 			$('.job-title').css({"display":"block"}).addClass('is-focused is-dirty');
 			$('.assign-user').css({"display":"none"});
 			$('#assign-manager').css({"display":"none"});
 			var managerOption =  '<option value="3">Manager</option>';
 			$('#job_title').addClass('is-focused').html(managerOption);
-		
+
 		} else if( 5 == user_type ) {
-			
+
 			$('#assign-manager').removeClass('assign-user');
 			$('#assign-manager').css({"display":"block"});
 			$('.assign-user').css({"display":"none"});
 			$('.job-title').css({"display":"block"}).addClass('is-focused is-dirty');
 			var supervisorOption =  '<option value="1">Supervisor</option>';
 			$('#job_title').addClass('is-focused').html(supervisorOption);
-		
+
 		} else if( 6 == user_type ) {
-			
+
 			$('#assign-manager').removeClass('assign-user');
 			$('#assign-manager').css({"display":"block"});
 			$('.assign-user').css({"display":"none"});
 			$('.job-title').css({"display":"block"}).addClass('is-focused is-dirty');
 			var qaOption =  '<option value="2">Quality Analyst</option>';
 			$('#job_title').addClass('is-focused').html(qaOption);
-		
+
 		} else {
-			
+
 			$('.assign-user').css({"display":"block"});
 			$('#assign-manager').css({"display":"block"});
 			$('.job-title').css({"display":"none"});
@@ -374,7 +374,7 @@ $(document).ready(function(){
 				required: true,
 				extension: "csv"
 			},
-			
+
 			default_password: {
 				default_password:true,
 				required: true,
@@ -387,12 +387,12 @@ $(document).ready(function(){
 				required: "Required",
 				extension: "Please upload only csv file"
 			},
-			
+
 			default_password: {
 				required: "Required"
 			}
 		},
-		
+
 		errorElement : 'p',
 		errorClass: "has-error",
 		errorPlacement: function(error, element) {
@@ -423,23 +423,23 @@ $(document).ready(function(){
 		"bInfo"		: false,
 	});
 	//==========================================================
-	
+
 	$('#user-table').DataTable({
 		"processing": true,
 		"serverSide": true,
 		"bLengthChange": true,
-		
+
 		"language": {
 			"emptyTable":"No Record Found."
 		},
 
 		"ajax": {
-			
+
 			async:false,
 			url: "<?php echo site_url('user/pagination'); ?>"
-			
+
 			, type: "POST"
-			
+
 			, dataSrc: function ( json ) {
 
 				$('meta[name=csrf_rcc]').attr("content", json.hash_token );
@@ -449,7 +449,7 @@ $(document).ready(function(){
 			, data: function( d ){
 				d.csrf_rcc = $('meta[name=csrf_rcc]').attr("content");
 			}
-			
+
 		}
 
 		, "columns": [
@@ -460,14 +460,14 @@ $(document).ready(function(){
 			{ "data": "email", "class":"mdl-data-table__cell--non-numeric"},
 			{ "data": "job_title", "class":"mdl-data-table__cell--non-numeric"},
 			{ "data": "user_type", "class":"mdl-data-table__cell--non-numeric"}
-			
+
 			<?php if( (3 == $user_session->user_type) || (4 == $user_session->user_type) ) : ?>
 			,{
 				"data": "action",
 			  	"searchable":false,
 			  	"orderable":false,
 		  		"class": "mdl-data-table__cell--non-numeric",
-		  		mRender: function (nRow, aData, iDisplayIndex) { 
+		  		mRender: function (nRow, aData, iDisplayIndex) {
 				  	var rowData 	= nRow.split('~');
 				  	var site_url 	= rowData[0];
 				  	var id 			= rowData[1];
@@ -487,23 +487,23 @@ $(document).ready(function(){
 	});
 	//==========================================================
 	<?php if( 1 == $show_admin_list ) : ?>
-		
+
 		$('#admin-table').DataTable({
 			"processing": true,
 			"serverSide": true,
 			"bLengthChange": true,
-			
+
 			"language": {
 				"emptyTable":"No Record Found."
 			},
 
 			"ajax": {
-				
+
 				async:false,
 				url: "<?php echo site_url('user/admin_pagination'); ?>"
-				
+
 				, type: "POST"
-				
+
 				, dataSrc: function ( json ) {
 
 					$('meta[name=csrf_rcc]').attr("content", json.hash_token );
@@ -513,7 +513,7 @@ $(document).ready(function(){
 				, data: function( d ){
 					d.csrf_rcc = $('meta[name=csrf_rcc]').attr("content");
 				}
-				
+
 			}
 
 			, "columns": [
@@ -523,14 +523,14 @@ $(document).ready(function(){
 				{ "data": "avaya_number", "class":"mdl-data-table__cell--non-numeric"},
 				{ "data": "email", "class":"mdl-data-table__cell--non-numeric"},
 				{ "data": "user_type", "class":"mdl-data-table__cell--non-numeric"}
-				
+
 				<?php if( 3 == $user_session->user_type  ) : ?>
 				,{
 					"data": "action",
 				  	"searchable":false,
 				  	"orderable":false,
 			  		"class": "mdl-data-table__cell--non-numeric",
-			  		mRender: function (nRow, aData, iDisplayIndex) { 
+			  		mRender: function (nRow, aData, iDisplayIndex) {
 					  	var rowData 	= nRow.split('~');
 					  	var site_url 	= rowData[0];
 					  	var id 			= rowData[1];
@@ -558,7 +558,7 @@ $(document).ready(function(){
 	$(document).on('click', '.submit_bulk_user_form', function(){
 
 		if($("form#form_create_bulk").valid()) {
-			
+
 			$("form#form_create_bulk").submit();
 			$(".submit_bulk_user_form").attr('disabled','disabled');
 			$(this).removeClass('submit_bulk_user_form');
@@ -573,7 +573,7 @@ $(document).ready(function(){
 	// var csrf_token =  '<?php// echo $csrf["hash"]; ?>';
 
 	$(document).on('change','#assigned_user',function () {
-		
+
 		var thisObject 	= $(this);
 		var url 		= thisObject.data('url');
 		var jobTitleValue = thisObject.val();
