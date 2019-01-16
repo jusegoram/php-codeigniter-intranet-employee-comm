@@ -39,7 +39,7 @@
 	<div class="mdl-grid demo-content">
 		<div class="mdl-card mdl-shadow--2dp demo-todo">
 			<div class="mdl-card__title">
-				<h2 class="mdl-card__title-text">Employee List scores</h2>
+					<h2> Score list</h2>
 			</div>
 
 			<div class="mdl-layout--middle">
@@ -65,23 +65,23 @@
 
 </main>
 
-<!-- <div id="main_push" style="display:none;">
+<div id="main_push" style="display:none;">
 	<section class="mdl-layout__content mdl-color--grey-100 dialog-section dialog_class_div">
 		<div class="mdl-grid demo-content">
 			<div class="mdl-card mdl-shadow--2dp demo-todo">
 				<div class="mdl-card__title">
-					<h2 class="mdl-card__title-text" id="name_score1">Scores</h2>
 				</div>
 
 				<div class="mdl-layout--middle">
 					<table id="performance_score_popup" class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
 						<thead>
 							<tr>
-								<th class="mdl-data-table__cell--non-numeric" data-field="id">S.No</th>
-								<th class="mdl-data-table__cell--non-numeric" data-field="performance_for">Name</th>
-								<th class="mdl-data-table__cell--non-numeric" data-field="performance_date">Avaya</th>
-								<th class="mdl-data-table__cell--non-numeric " data-field="quality">Date</th>
-								<th class="mdl-data-table__cell--non-numeric " data-field="adherence">Score</th>
+							<th class="mdl-data-table__cell--non-numeric" >Employee Id</th>
+							<th class="mdl-data-table__cell--non-numeric" >Name</th>
+							<th class="mdl-data-table__cell--non-numeric" >Client</th>
+							<th class="mdl-data-table__cell--non-numeric" >Date</th>
+							<th class="mdl-data-table__cell--non-numeric" >Score</th>
+							<th class="mdl-data-table__cell--non-numeric" >Status</th>
 							</tr>
 						</thead>
 					</table>
@@ -90,4 +90,4 @@
 			</div>
 		</div>
 	</section>
-</div> -->
+</div>

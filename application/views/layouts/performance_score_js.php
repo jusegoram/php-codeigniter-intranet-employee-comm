@@ -135,9 +135,12 @@ $(document).ready(function(){
 				},
 				{ "data": "employee_id", "class": "mdl-data-table__cell--non-numeric"},
 
-				// <?php if( (1 == $user_session->user_type) || (5 == $user_session->user_type) || (6 == $user_session->user_type) ): ?>
-				// 	{ "data": "email", "class": "mdl-data-table__cell--non-numeric"}
-				// <?php else: ?>
+				<?php if( (1 == $user_session->user_type) || (5 == $user_session->user_type) || (6 == $user_session->user_type) ): ?>
+					{ "data": "score", "class": "mdl-data-table__cell--non-numeric"},
+					{ "data": "avaya_number", "class": "mdl-data-table__cell--non-numeric"},
+					{ "data": "date", "class": "mdl-data-table__cell--non-numeric"},
+					{ "data": "action", "searchable":false, "orderable":false, "class": "mdl-data-table__cell--non-numeric",
+				<?php else: ?>
 					{ "data": "score", "class": "mdl-data-table__cell--non-numeric"},
 					{ "data": "avaya_number", "class": "mdl-data-table__cell--non-numeric"},
 					{ "data": "date", "class": "mdl-data-table__cell--non-numeric"},
