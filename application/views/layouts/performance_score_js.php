@@ -118,12 +118,11 @@ $(document).ready(function(){
 			}
 
 			, "columns": [
-				{ "data": "id", "searchable":false, "orderable":false, "class": "mdl-data-table__cell--non-numeric"},
-				{ "data": "first_name", "class": "mdl-data-table__cell--non-numeric",
-				{ "data": "employee_id", "class": "mdl-data-table__cell--non-numeric"},
-				{ "data": "score", "class": "mdl-data-table__cell--non-numeric"},
-				{ "data": "avaya_number", "class": "mdl-data-table__cell--non-numeric"},
-				{ "data": "date", "class": "mdl-data-table__cell--non-numeric"}
+							{data: 'employee_id', "searchable":false, "orderable":false, "class": "mdl-data-table__cell--non-numeric"},
+							{data: 'name', "searchable":false, "orderable":false, "class": "mdl-data-table__cell--non-numeric"},
+							{data: 'avaya_number', "searchable":false, "orderable":false, "class": "mdl-data-table__cell--non-numeric"},
+							{data: 'date', "searchable":false, "orderable":false, "class": "mdl-data-table__cell--non-numeric"},
+							{data: 'score', "searchable":false, "orderable":false, "class": "mdl-data-table__cell--non-numeric"},
 			]
 
 			<?php if( (1 == $user_session->user_type) || (5 == $user_session->user_type) || (6 == $user_session->user_type) ): ?>

@@ -55,7 +55,6 @@
 							<th class="mdl-data-table__cell--non-numeric" >Client</th>
 							<th class="mdl-data-table__cell--non-numeric" >Date</th>
 							<th class="mdl-data-table__cell--non-numeric" >Score</th>
-							<th class="mdl-data-table__cell--non-numeric" >Status</th>
 						</tr>
 					</thead>
 				</table>
@@ -81,7 +80,6 @@
 							<th class="mdl-data-table__cell--non-numeric" >Client</th>
 							<th class="mdl-data-table__cell--non-numeric" >Date</th>
 							<th class="mdl-data-table__cell--non-numeric" >Score</th>
-							<th class="mdl-data-table__cell--non-numeric" >Status</th>
 							</tr>
 						</thead>
 					</table>
