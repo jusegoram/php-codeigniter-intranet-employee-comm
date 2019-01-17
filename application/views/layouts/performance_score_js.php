@@ -27,8 +27,7 @@ $(document).ready(function(){
 
 			"processing": true,
 			"serverSide": true,
-			"bLengthChange": true,
-
+			"bLengthChange": true
 			"bPaginate"	: false,
 			"bFilter"	: false,
 			"bInfo"		: false,
@@ -94,7 +93,7 @@ $(document).ready(function(){
 			"processing": true,
 			"serverSide": true,
 			"bLengthChange": true,
-
+			"lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]]
 			"language": {
 				"emptyTable":"No Record Found."
 			},
