@@ -101,7 +101,7 @@ $(document).ready(function(){
 
 			"ajax": {
 
-				async:true,
+				async:false,
 				url: "<?php echo site_url('performance_score/pagination'); ?>"
 				, type: "POST"
 
