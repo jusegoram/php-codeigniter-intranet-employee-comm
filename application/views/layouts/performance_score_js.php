@@ -27,7 +27,7 @@ $(document).ready(function(){
 
 			"processing": true,
 			"serverSide": true,
-			"bLengthChange": true
+			"bLengthChange": true,
 			"bPaginate"	: false,
 			"bFilter"	: false,
 			"bInfo"		: false,
@@ -93,14 +93,15 @@ $(document).ready(function(){
 			"processing": true,
 			"serverSide": true,
 			"bLengthChange": true,
-			"lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]]
+			"lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
+			"paging": true,
 			"language": {
 				"emptyTable":"No Record Found."
 			},
 
 			"ajax": {
 
-				async:false,
+				async:true,
 				url: "<?php echo site_url('performance_score/pagination'); ?>"
 				, type: "POST"
 
