@@ -28,8 +28,7 @@ class Notification_model extends CI_Model
 				$this->db->where($where);
 			}
 		} else {
-			$where = '(u.id IN('.implode(',', $user_id).')';
-			$this->db->where($where);
+			$this->db->where('u.id', $user_id);
 		}
 
 		if( $is_global ){
