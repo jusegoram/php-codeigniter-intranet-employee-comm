@@ -137,7 +137,7 @@ class Notification_model extends CI_Model
 		$d = date('d', $current_date);
 		$y = date('Y', $current_date);
 
-		$from_date 	= mktime(0,0,0, $m, $d, $y);
+		$from_date 	= mktime(0,0,0, 01, 01, 2019);
 		$to_date 	= mktime(23,59,59, $m, $d, $y);
 
 		$where_date = 'n.notification_date >= ' . $from_date. ' AND n.notification_date <=' . $to_date ;
