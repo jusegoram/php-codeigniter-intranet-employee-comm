@@ -10,7 +10,7 @@ $(document).ready(function()
 		var discoverCard 		= /^(?:6(?:011|5[0-9][0-9])[0-9]{12})$/;
 		var americalExpressCard = /^(?:3[47][0-9]{13})$/;
 		var dinnerClubCard 		= /^(?:3(?:0[0-5]|[68][0-9])[0-9]{11})$/;
-		
+
 		flag = 0;
 		if( inputtxt.match(/(\d+)/g) )
 		{
@@ -27,7 +27,7 @@ $(document).ready(function()
 			}
 		}
 
-		if( 
+		if(
 			(inputtxt.match(visaCard)) || (inputtxt.match(masterCard)) || (inputtxt.match(jcbCard)) || (inputtxt.match(discoverCard))
 			|| (inputtxt.match(americalExpressCard)) || (inputtxt.match(dinnerClubCard)) || (flag > 0)
 		){
@@ -35,8 +35,8 @@ $(document).ready(function()
 		}
 		else
 		{
-			return true;		
-		}	
+			return true;
+		}
 	}
 
 	$.validator.addMethod("document_name", function(value, element) {
@@ -156,7 +156,7 @@ $(document).ready(function()
 
 	$("#edit_form_notifications").validate({
 		rules: {
-			
+
 			notification_type: {
 				required: true
 			},
@@ -197,7 +197,7 @@ $(document).ready(function()
 			}
 		},
 		messages: {
-			
+
 			notification_type: {
 				required: "Required"
 			},
@@ -287,7 +287,7 @@ $(document).ready(function()
 		if($("form#form_notification_details").valid()) {
 
 			if(!$('#is_accepted').is(':checked')) {
-				
+
 				showDialog({
 					text: 'You must agree with the terms and conditions!',
 					positive: {
@@ -307,7 +307,7 @@ $(document).ready(function()
 	$(document).on('click', '.submit_notification_form', function(){
 
 		if($("form#form_notifications").valid()) {
-			
+
 			$("form#form_notifications").submit();
 			$(".submit_notification_form").attr('disabled','disabled');
 			$(this).removeClass('submit_notification_form');
@@ -317,28 +317,28 @@ $(document).ready(function()
 		}
 	});
 	//==========================================================
-	
+
 	var checkUserId = '<?php echo $user_session->id; ?>';
 	var checkUserType = '<?php echo $user_session->user_type; ?>';
 
-	
+
 	// $('#notification-table').DataTable();
 		$('#notification-table').DataTable({
 		"processing": true,
 		"serverSide": true,
 		"bLengthChange": true,
-		
+
 		"language": {
 			"emptyTable":"No Record Found."
 		},
 
 		"ajax": {
-			
-			async:false,
+
+			async:true,
 			url: "<?php echo site_url('notification/pagination'); ?>"
-			
+
 			, type: "POST"
-			
+
 			, dataSrc: function ( json ) {
 
 				$('meta[name=csrf_rcc]').attr("content", json.hash_token );
@@ -348,7 +348,7 @@ $(document).ready(function()
 			, data: function( d ){
 				d.csrf_rcc = $('meta[name=csrf_rcc]').attr("content");
 			}
-			
+
 		}
 
 		, "columns": [
@@ -359,13 +359,13 @@ $(document).ready(function()
 			{ "data": "document_name", "class": "mdl-data-table__cell--non-numeric"},
 			{ "data": "submit_first_name", "class": "mdl-data-table__cell--non-numeric"},
 			{ "data": "is_accepted", "class": "mdl-data-table__cell--non-numeric"},
-			
+
 			{
 				"data": "action",
 			  	"searchable":false,
 			  	"orderable":false,
 		  		"class": "mdl-data-table__cell--non-numeric",
-		  		mRender: function (nRow, aData, iDisplayIndex) { 
+		  		mRender: function (nRow, aData, iDisplayIndex) {
 				  	var rowData = nRow.split('~');
 				  	var site_url = rowData[0];
 				  	var id 		= rowData[1];
@@ -374,25 +374,25 @@ $(document).ready(function()
 				  	var is_global 	= rowData[4];
 				  	var global_url = rowData[5];
 				  	var submittedBy = rowData[6];
-				  	
+
 				  	// console.log(user_type);
 				  	// var td_start 	= '<td class="mdl-data-table__cell--non-numeric" >';
-					
+
 					var edit_icon = '';
 				  	if( ( checkUserId == submittedBy ) || ( 3 == checkUserType ) || ( 4 == checkUserType ) ){
 
 				  		edit_icon 	= '<a href=' + site_url + '/edit/'+id+' title="Edit"><i class="tiny material-icons" title="Edit">mode_edit</i></a>';
 				  	}
 				  	var delete_icon = '<a class="delete_data" href="javascript:void(0);" data-url=' + site_url + '/remove data-id=' + id +' title="Delete"><i class="tiny material-icons" title="Delete">delete</i></a>';
-				  	
+
 				  	var view_icon 	= '<a href=' + site_url + '/details/'+id+'  title="View/Comment"><i class="material-icons">visibility</i></a>';
 
 				  	if( 2 == is_global ){
-						view_icon 	= '<a href=' + global_url + '/details/'+id+'  title="View/Comment"><i class="material-icons">visibility</i></a>';					  		
+						view_icon 	= '<a href=' + global_url + '/details/'+id+'  title="View/Comment"><i class="material-icons">visibility</i></a>';
 				  	}
 
 				  	var managerOperations = '';
-				  	
+
 				  	if( 1 == is_accepted ) {
 				  		managerOperations = view_icon;
 				  	} else {
@@ -421,7 +421,7 @@ $(document).ready(function()
 	//==========================================================
 
 	$( window ).resize(function() {
-		changeLayout();	
+		changeLayout();
 	});
 
 	$('iframe#iframe1').load(function(){
@@ -432,7 +432,7 @@ $(document).ready(function()
 	//==========================================================
 
 	function changeLayout(){
-		
+
 		$("iframe#iframe1").contents().find('#titlebar #documentName').css('display','block');
 
 		var windowWidth = $(window).width();
@@ -440,7 +440,7 @@ $(document).ready(function()
 		var iframeMiddleContainer = $("iframe#iframe1").contents().find('#toolbarContainer #toolbarMiddleContainer');
 
 		if( windowWidth < 675 ) {
-			
+
 			$("iframe#iframe1").contents().find('#toolbarContainer #toolbarRight').css({'display':'none','position':'none'});
 			$("iframe#iframe1").contents().find('#toolbarContainer').css('height','auto');
 			$("iframe#iframe1").contents().find('#toolbarContainer #toolbarLeft').css({'float':'left','width':'100%','position':'relative'});
@@ -467,7 +467,7 @@ $(document).ready(function()
 				$("iframe#iframe1").contents().find('#titlebar #documentName').css('display','none');
 				iframeMiddleContainer.css({'width':'100%','position':'relative'});
 				iframeElement.css('right','2%');
-			} 
+			}
 		} else if((windowWidth>675) && (windowWidth<=1100)) {
 			iframeElement.css({'right':'-140%'});
 		} else if((windowWidth>1100) && (windowWidth<=1300)) {
@@ -486,7 +486,7 @@ $(document).ready(function()
 		type 	:"POST",
 		url 	: url,
 		data 	: {
-			'user_type' :userType, 
+			'user_type' :userType,
 			'user_id' : userId,
 			'csrf_rcc'  : $('input[name=csrf_rcc]').attr("value"),
 			},
@@ -502,7 +502,7 @@ $(document).ready(function()
 			{
 				var myOptions = '<option value=""></option>';
 				myOptions +='<option value="all" selected="selected" id="notselect-all">All</option>';
-				
+
 				for(var i=0; i<results.length; i++){
 					myOptions +=  '<option value="'+results[i].id+'" disabled="disabled" >'+results[i].first_name+' '+results[i].last_name+'</option>';
 				}
@@ -527,12 +527,12 @@ $(document).ready(function()
 		var thisObj = $(this);
 		var url 	= thisObj.data('url');
 		var id 		= thisObj.data('id');
-		
+
 		$.ajax({
 			type 	:"POST",
 			url 	: url,
 			data 	: {
-				'id' :id, 
+				'id' :id,
 				'csrf_rcc'  : $('input[name=csrf_rcc]').attr("value"),
 				},
 
@@ -541,7 +541,7 @@ $(document).ready(function()
 			{
 				$('input[name=csrf_rcc]').attr("value", data.hash_token );
 				var success = data.success;
-				
+
 				// console.log(data);
 				if(success == 1)
 				{
@@ -558,13 +558,13 @@ $(document).ready(function()
 			}
 		});
 	});
-	//==========================================================	
+	//==========================================================
 
 	$(".chosen-users").chosen({ placeholder_text_multiple :"Select Users", allow_single_deselect:true });
 
 
 	$(document).on('change','#user_id',function()
-	{		
+	{
 		if( $('#user_id option:selected').val() == 'all' )
 		{
 			$('#user_id option').not('#notselect-all').attr("disabled","disabled");
@@ -578,9 +578,9 @@ $(document).ready(function()
 			$('#user_id option').removeAttr("disabled");
 			$('#notselect-all').attr("disabled","disabled");
 			$('select#user_id').trigger('chosen:updated');
-			
+
 		} else {
-			
+
 			$('#user_id option').removeAttr("disabled");
 			$('select#user_id').trigger('chosen:updated');
 		}
@@ -593,7 +593,7 @@ $(document).ready(function()
 
 	// $("select.chosen-find-length").on("chosen:showing_dropdown", function(evnt, params) {
 	// evnt.target.options.addClass('result-selected');
-   	
+
 	// var ss 	= evnt.target.options;
 	// console.log(ss);
 
@@ -604,7 +604,7 @@ $(document).ready(function()
 	// 	        $field = $(chosen.form_field);
 
 	// 	    if( !chosen.__customButtonsInitilized ) {
-		    	
+
 	// 	    	chosen.__customButtonsInitilized = true;
 	// 	        var contained = function( el ) {
 	// 	            var container = document.createElement("div");
@@ -644,7 +644,7 @@ $(document).ready(function()
 	// 	                .css("max-height", "30px").css("overflow", "hidden");
 	// 	            $selectAllEl.on("click", function(e) {
 	// 	                e.preventDefault();
-		                
+
 	// 	                // console.log($field.children());
 	// 	                $field.children().prop('selected', true);
 	// 	                // $field.children().addClass('result-selected');
