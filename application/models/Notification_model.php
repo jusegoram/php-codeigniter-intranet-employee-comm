@@ -28,7 +28,6 @@ class Notification_model extends CI_Model
 				$this->db->where($where);
 			}
 		} else {
-			$this->db->where('u.id', end($user_id));
 			$this->db->where_in('u.id', $user_id);
 		}
 
@@ -87,7 +86,6 @@ class Notification_model extends CI_Model
 				$this->db->where($where);
 			}
 		} else {
-			$this->db->where('u.id', end($user_id));
 			$this->db->where_in('u.id', $user_id);
 		}
 
