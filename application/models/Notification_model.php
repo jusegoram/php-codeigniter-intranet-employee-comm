@@ -1,7 +1,7 @@
 <?php
 class Notification_model extends CI_Model
 {
-	public function find_all( $user_id = false, $user_type = false, $search = false, $is_global = false, $is_assigned_employee = false, $is_both = false, $uid = false )
+	public function find_all( $user_id = false, $user_type = false, $search = false, $is_global = false, $is_assigned_employee = false, $is_both = false )
 	{
 		if( $search )
 			$this->db->select('n.id');
@@ -137,7 +137,7 @@ class Notification_model extends CI_Model
 		$d = date('d', $current_date);
 		$y = date('Y', $current_date);
 
-		$from_date 	= mktime(0,0,0, 01, 01, 2019);
+		$from_date 	= mktime(0,0,0, 1, $d, $y);
 		$to_date 	= mktime(23,59,59, $m, $d, $y);
 
 		$where_date = 'n.notification_date >= ' . $from_date. ' AND n.notification_date <=' . $to_date ;
