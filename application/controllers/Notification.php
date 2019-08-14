@@ -106,12 +106,9 @@ class Notification extends CI_Controller
 						$ids[]  =  $user->id;
 					}
 				}
-				print_r($user_session->id);
-				print_r($ids);
-				die;
+
 				array_push($ids, $user_session->id);
-				$results 	= $this->Notification_model->find_all( $ids, true, $search_str, 1, 1);
-				print_r($results);
+				$results 	= $this->Notification_model->find_all( $ids, true, $search_str, 1, 1, false, $user_session->id);
 				$user_lists = $this->Notification_model->find_all_pagination( $ids, true, $search_str, $query_parameter['limit'], $query_parameter['start'], $query_parameter['type'], $query_parameter['order_by'], 1, false, 1);
 			}
 			else
